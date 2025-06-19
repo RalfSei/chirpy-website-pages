@@ -1,27 +1,34 @@
 # deploy.ps1
 
-# In Quellcode-Verzeichnis (nicht _site)
+# Stelle sicher, dass du im Projektordner (chirpy-quellcode) bist
 Set-Location -Path "$PSScriptRoot"
 
-Write-Host "🔧 Baue die Seite..."
+Write-Host "🔧 Baue die Jekyll-Seite für Produktion..."
+
+# Baue mit Produktionskonfiguration
 bundle exec jekyll build --config _config.yml,_config_prod.yml
 
-# Wechsel in _site (die gebaute Webseite)
+# Wechsle in den _site-Ordner (fertige Seite)
 Set-Location -Path ".\_site"
 
-# Git-Repo initialisieren oder updaten
+# Initialisiere Git, falls noch nicht geschehen
 if (-not (Test-Path ".git")) {
     git init
-    git remote add origin https://github.com/ralfsei/chirpy-website-pages.git
+    git remote add origin https://github.com/RalfSei/chirpy-website-pages.git
 }
 
+# Optional: Korrigiere den Remote-Link für Sicherheit
+git remote set-url origin https://github.com/RalfSei/chirpy-website-pages.git
+
+# Push-Vorgang
 git add .
-$commitMessage = "Deploy am $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+$commitMessage = "🚀 Deploy am $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
 git commit -m $commitMessage
 git branch -M main
 git push -f origin main
 
-# Zurück ins Quellverzeichnis
+# Zurück in den Projektordner
 Set-Location -Path "$PSScriptRoot"
 
-Write-Host "`n✅ Seite erfolgreich deployed!"
+Write-Host "`n✅ Quellcode gebaut und Website erfolgreich deployed nach chirpy-website-pages!"
+
