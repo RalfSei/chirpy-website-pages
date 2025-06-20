@@ -1,2 +1,0 @@
-# chirpy-quellcode
-enthält alles
