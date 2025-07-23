@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG vs. LLM | Meine Entwicklerseite</title>
+<link rel="stylesheet" href="/chirpy-website-pages/assets/css/style.css">
+
+  </head>
+  <body>
+    <main class="content">
+      <h1 id="rag-vs-llm-understanding-the-difference-between-retrieval-pipelines-and-generative-models">RAG vs. LLM: Understanding the Difference Between Retrieval Pipelines and Generative Models</h1>
+
+<blockquote>
+  <p>Inspired by <em>AI Engineering</em> by Chip Huyen (2025)</p>
+</blockquote>
+
+<hr />
+
+<h2 id="-not-all-ai-systems-are-truly-generative">🧵 Not all “AI systems” are truly generative.</h2>
+
+<p>There’s a common misconception in the AI world:<br />
+That all AI models are capable of generation — when in fact, many are not.</p>
+
+<p>Many systems labeled “AI” are actually <strong>retrieval pipelines</strong>, not fully generative models.</p>
+
+<p>They retrieve pre-existing chunks of information from a knowledge base and rephrase them.<br />
+Useful? Absolutely. Generative? <strong>Not quite</strong>.</p>
+
+<p>Let’s break it down.</p>
+
+<hr />
+
+<h2 id="-what-is-rag">🔹 What is RAG?</h2>
+
+<p><strong>RAG</strong> stands for <strong>Retrieval-Augmented Generation</strong>. It typically involves:</p>
+
+<ol>
+  <li>A <strong>retriever</strong> (e.g., vector search using embeddings) that finds relevant data chunks from a knowledge base.</li>
+  <li>A <strong>generator</strong> (typically a language model) that synthesizes a response using those chunks.</li>
+</ol>
+
+<p>As Chip Huyen explains in <em>AI Engineering</em>:</p>
+
+<blockquote>
+  <p><em>“RAG systems rely on two key components: a retriever and a generator.”</em><br />
+<em>– AI Engineering, Chapter 6</em></p>
+</blockquote>
+
+<p>These systems are powerful for accuracy and grounding — but <strong>they do not generate from scratch</strong>.</p>
+
+<hr />
+
+<h2 id="-what-makes-llms-different">🔸 What Makes LLMs Different?</h2>
+
+<p>Real <strong>Large Language Models (LLMs)</strong>, like GPT or Claude, don’t just stitch chunks together.</p>
+
+<p>They are <strong>completion engines</strong> that generate text <strong>token by token</strong>, based on internalized statistical representations of language and knowledge.</p>
+
+<blockquote>
+  <p><em>“You can think of a language model as a completion machine.”</em><br />
+<em>“The outputs of language models are open-ended.”</em><br />
+<em>– AI Engineering, Chapters 1 &amp; 2</em></p>
+</blockquote>
+
+<p>LLMs are capable of:</p>
+
+<ul>
+  <li>Abstract reasoning</li>
+  <li>Synthesis across domains</li>
+  <li>Generalization beyond training data</li>
+</ul>
+
+<p>That’s not retrieval.<br />
+That’s <strong>true generative capability</strong>.</p>
+
+<hr />
+
+<h2 id="-tldr">✅ TL;DR</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>RAG</th>
+      <th>LLM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Retrieves data</td>
+      <td>✅ Yes</td>
+      <td>❌ No</td>
+    </tr>
+    <tr>
+      <td>Generates from scratch</td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>Needs a vector DB</td>
+      <td>✅ Often</td>
+      <td>❌ Not required</td>
+    </tr>
+    <tr>
+      <td>Token-by-token generation</td>
+      <td>⚠️ Only in generator step</td>
+      <td>✅ Core mechanism</td>
+    </tr>
+    <tr>
+      <td>Good for fact grounding</td>
+      <td>✅ Yes</td>
+      <td>⚠️ Sometimes limited</td>
+    </tr>
+    <tr>
+      <td>Capable of synthesis</td>
+      <td>❌ Limited</td>
+      <td>✅ Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="️-tools--frameworks">🛠️ Tools &amp; Frameworks</h2>
+
+<p>Here are some useful frameworks for working with either paradigm:</p>
+
+<ul>
+  <li><a href="https://www.langchain.com/"><strong>LangChain</strong></a></li>
+  <li><a href="https://www.llamaindex.ai/"><strong>LlamaIndex</strong></a></li>
+  <li><a href="https://haystack.deepset.ai/"><strong>Haystack</strong></a></li>
+</ul>
+
+<hr />
+
+<h2 id="-recommended-papers">📄 Recommended Papers</h2>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/2005.11401"><em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em></a> – Lewis et al., 2020</li>
+  <li><a href="https://arxiv.org/abs/2302.04761"><em>Toolformer: Language Models Can Teach Themselves to Use Tools</em></a> – Schick et al., 2023</li>
+  <li><a href="https://arxiv.org/abs/2301.05221"><em>A Survey of Hallucination in Natural Language Generation</em></a> – Ji et al., 2023</li>
+</ul>
+
+<hr />
+
+<h2 id="-book-reference">📚 Book Reference</h2>
+
+<blockquote>
+  <p><strong>Chip Huyen – <em>AI Engineering</em> (2025)</strong><br />
+A highly recommended resource that covers:</p>
+  <ul>
+    <li>The architecture of foundation model applications</li>
+    <li>RAG, prompting, finetuning</li>
+    <li>Evaluation, inference, feedback, and productionization</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="-get-involved">💬 Get Involved</h2>
+
+<p>Have questions, experiences, or ideas to share?<br />
+Reach out via <a href="https://www.linkedin.com/">LinkedIn</a> or join the conversation on X/Twitter.</p>
+
+
+    </main>
+  </body>
+</html>
